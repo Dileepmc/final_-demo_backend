@@ -8,24 +8,25 @@ const app = express()
 const port = 3000
 
 app.use(cors({
-  origin: ['http://localhost:5173'],
+   // origin: ['http://localhost:5173'],
+   origin: '*',
   methods: ['GET', 'POST', 'PATCH', 'DELETE'],
   credentials: true,
 
 }))
 app.use(express.json())
 app.use(cookieParser())
-
+ 
 const userRoutes = require('./Routes/userRoutes')
 const menuRoutes = require('./Routes/menuRoutes')
 const contactRoutes = require('./Routes/contactRoutes')
 
-app.use('/users/signup', userRoutes) 
-app.use('/users', userRoutes)
-app.use('/users', userRoutes)
-app.use('/menus', menuRoutes) 
-app.use('/menus/:menuId', menuRoutes) 
-app.use('/contact', contactRoutes) 
+app.use('/api/users/signup', userRoutes) 
+app.use('/api/users', userRoutes)
+app.use('/api/users', userRoutes)
+app.use('/api/menus', menuRoutes)  
+app.use('/api/menus/:menuId', menuRoutes) 
+app.use('/api/contact', contactRoutes) 
  
  
 app.listen(port, () => {
